@@ -213,20 +213,25 @@ function sign_in($login, $password){
         return Response::Error("Identifiant ou mot de passe incorrect");
     }
 }
-
-#CATEGORIES
-
-/**
- * Gets all the categories
- */
-function get_all_categories(){
-    $result = array();
-    $req_categories = query_db('SELECT * from categories');
-    while ($data = $req_categories->fetch()){
-        $result[$data['id']]=$data;
-    }
-    return Response::New($result);
+function console_log( $data ){
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
 }
+
+function get_all($collection){
+    $curl = curl_init(); //Initializes curl
+    curl_setopt($curl, CURLOPT_URL, 'http://localhost:1337/' . $collection);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json'
+    ]); // Sets header information for authenticated requests
+
+    $res = curl_exec($curl);
+    curl_close($curl);
+    return json_decode($res);
+}
+
 
 #USERS
 

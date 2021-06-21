@@ -6,7 +6,7 @@ require '../assets/libs/Parsedown.php';
 
 $articles = get_articles(9)->data;
 
-$categories = get_all_categories()->data;
+$categories = get_all("categories")->data;
 
 $Parsedown = new Parsedown();
 

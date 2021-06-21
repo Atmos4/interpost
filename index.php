@@ -7,10 +7,9 @@ require 'include/db.php';
 //Variables
 
 $current_page = "index";
-$articles = get_first_articles()->data;
-
+$articles = get_all("articles");
+//
 $first = array_shift($articles);
-
 ?>
 
 
@@ -33,7 +32,7 @@ $first = array_shift($articles);
 			
 		<div id="page-wrapper">
 			
-			<?php 
+			<?php
 			include 'include/navbar.php';
 			 ?>
 
@@ -45,28 +44,28 @@ $first = array_shift($articles);
 							<div class="row">
 								<div class="col-12">
 									<section id="banner" class="box feature">
-										<a class="flex" href="article?id=<?=$first['id']?>">
-											<div class="image wide"><img src=<?=$first['image']?> alt=<?=$first['image']?> /></div>
+										<a class="flex" href="article?id=<?=$first->id?>">
+											<div class="image wide"><img src=<?="http://localhost:1337" . $first->image->url?> alt=<?=$first->image->alternativeText?> /></div>
 											<div class="inner">
 												<header>
-													<h2><?=$first['title']?></h2>
+													<h2><?=$first->title?></h2>
 												</header>
-												<p><?=$first['subtitle']?></p>
+												<p><?=$first->subtitle?></p>
 											</div>
 										</a>
 									</section>
 								</div>
 
 							<?php foreach ($articles as $article){
-									$id = $article['id'];
-									$title = $article['title'];
-									$subtitle = $article['subtitle'];
-									$image = $article['image'];?>
+									$id = $article->id;
+									$title = $article->title;
+									$subtitle = $article->subtitle;
+									$image = $article->image;?>
 
 								<div class="col-6 col-12-medium">
 									<section class="box feature">
 										<a href="article?id=<?=$id?>">
-											<div class="image featured"><img src=<?=$image?> alt=<?=$image?> /></div>
+											<div class="image featured"><img src=<?="http://localhost:1337" . $image->url?> alt=<?=$image->alternativeText?> /></div>
 											<div class="inner">
 												<header>
 													<h2><?=$title?></h2>

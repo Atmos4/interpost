@@ -9,7 +9,7 @@ if (empty($shrink_nav)){
     $shrink_nav = false;
 }
 
-$categories = get_all_categories()->data;
+$categories = get_all("categories");
 ?>
 
 
@@ -30,7 +30,7 @@ $categories = get_all_categories()->data;
 
                         <?php foreach ($categories as $cate){?>
 
-                            <li><a href="browse?type=<?=$cate['id']?>"><?=$cate['name']?></a></li>
+                            <li><a href="browse?type=<?=$cate->id?>"><?=$cate->name?></a></li>
                             
                         <?php }?>
 

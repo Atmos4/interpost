@@ -22,7 +22,7 @@ if (isset($_GET) and isset($_GET['id'])){
     }
 }
 
-$categories = get_all_categories()->data;
+$categories = get_all("categories")->data;
 
 $users = get_all_users()->data;
 
