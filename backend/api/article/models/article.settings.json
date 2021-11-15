@@ -15,7 +15,7 @@
     "content": {
       "type": "richtext"
     },
-    "image": {
+    "cover_image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -37,13 +37,13 @@
       "type": "text"
     },
     "writers": {
-      "collection": "writer",
       "via": "articles",
+      "collection": "writer",
       "dominant": true
     },
     "categories": {
-      "collection": "category",
       "via": "articles",
+      "collection": "category",
       "dominant": true
     }
   }
